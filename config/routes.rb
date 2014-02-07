@@ -1,6 +1,7 @@
 Todoapp::Application.routes.draw do
 
-  root to: "application#index", via: :get
+  root to: "tasks#index", via: :get
+  resources :tasks
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -13,7 +13,7 @@ set :deploy_to, "/home/ubuntu/nginx"
 set :use_sudo, false
 set :rails_env, "production"
 
-set :deploy_via, :copy
+set :deploy_via, :remote_cache
 set :ssh_options, { :forward_agent => true }
 set :keep_releases, 5
 
