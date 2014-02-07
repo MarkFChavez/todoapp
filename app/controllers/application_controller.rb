@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def index
-    render text: "Hello world!"
+    render 'application/index', locals: { name: 'Mark Joel' }
   end
 end
