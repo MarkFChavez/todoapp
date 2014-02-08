@@ -22,10 +22,9 @@ default_run_options[:pty] = true
 
 server "54.213.82.201", :app, :web, :db, :primary => true
 
+after "deploy", "deploy:symlink_config_files"
 after "deploy", "deploy:restart"
 after "deploy", "deploy:cleanup"
-
-before "deploy:assets:precompile", "deploy:symlink_config_files"
 
 namespace :deploy do
   desc "Symlink shared config files"
