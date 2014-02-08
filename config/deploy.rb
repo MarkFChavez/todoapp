@@ -22,14 +22,14 @@ default_run_options[:pty] = true
 
 server "54.213.82.201", :app, :web, :db, :primary => true
 
-after "deploy", "deploy:symlink_config_files"
 after "deploy", "deploy:restart"
 after "deploy", "deploy:cleanup"
+before "deploy:assets:precompile", "deploy:symlink_config_files"
 
 namespace :deploy do
   desc "Symlink shared config files"
   task :symlink_config_files do
-    run "#{sudo} ln -sf #{deploy_to}/shared/config/database.yml #{latest_release}/config/database.yml"
+    run "#{try_sudo} ln -sf #{deploy_to}/shared/config/database.yml #{release_path}/config/database.yml"
   end
 
   desc "Restart passenger"
